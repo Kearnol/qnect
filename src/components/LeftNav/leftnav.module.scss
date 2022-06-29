@@ -1,0 +1,13 @@
+.main {
+    min-width: 12vw;
+    min-height: 80vh;
+    background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.main > li {
+    list-style: none;
+    margin: 5px 15px;
+}

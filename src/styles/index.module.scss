@@ -1,0 +1,29 @@
+.index {
+    width: 100vh;
+}
+
+.leftNav{
+    height: 80vh;
+    min-width: 12vw;
+    background-color: yellow;
+}
+
+.mainContent {
+    height: 80vh;
+    min-width: 88vw;
+    background-color: orange;
+}
+.hub {
+    height: 80vh;
+    min-width: 88vw;
+    background-color: rgb(167, 239, 212);
+}
+.find {
+    height: 80vh;
+    min-width: 88vw;
+    background-color: rgb(119, 170, 218);
+}
+
+.body {
+    display: flex;
+}

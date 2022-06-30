@@ -1,12 +1,13 @@
-import Layout from "../components/Layout/Layout"
+import Layout from "../components/DocLayout/Layout"
 import style from '~/styles/index.module.scss'
+import Create from '../components/Create/Create'
 
 
-export default function Create(){
+export default function CreatePage(){
     
     return(
             <Layout title="Q-nect" className={style.index}>
-            <h1>Create</h1>
+            <Create/>
             </Layout>
 
     )

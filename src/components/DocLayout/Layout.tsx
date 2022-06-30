@@ -22,7 +22,6 @@ import LeftNav from '../LeftNav/LeftNav'
     
                 <Header />
                 <main className={style.main}>
-                    <LeftNav/>
                     {children}
                     </main>
                 <Footer />

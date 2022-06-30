@@ -1,4 +1,4 @@
-import Layout from "../components/Layout/Layout"
+import Layout from "../components/DocLayout/Layout"
 import style from '~/styles/index.module.scss'
 
 

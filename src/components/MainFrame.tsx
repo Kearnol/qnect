@@ -17,10 +17,11 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from '../ListItems';
-import Chart from '../Chart';
-import Deposits from '../Deposits';
-import Orders from '../Orders';
+import { mainListItems, secondaryListItems } from './ListItems';
+import Chart from './Chart';
+import Deposits from './Deposits';
+import Orders from './Orders';
+import { opendirSync } from 'fs';
 
 function Copyright(props: any) {
   return (
@@ -37,7 +38,7 @@ function Copyright(props: any) {
 
 const drawerWidth: number = 240;
 
-interface AppBarProps extends MuiAppBarProps {
+export interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
 }
 
@@ -87,15 +88,21 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const mdTheme = createTheme();
 
-function DashboardContent() {
-  const [open, setOpen] = React.useState(true);
+type MainFrameContentProps = {
+  screenName: string;
+  children?: JSX.Element[] | JSX.Element | null;
+}
+
+function MainFrame({children, screenName}: MainFrameContentProps):JSX.Element {
+  const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
   return (
+    <>
     <ThemeProvider theme={mdTheme}>
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={{ display: 'flex', width: "100vw" }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
           <Toolbar
@@ -110,7 +117,7 @@ function DashboardContent() {
               onClick={toggleDrawer}
               sx={{
                 marginRight: '36px',
-                ...(open && { display: 'none' }),
+                ...(open && { display: "block"}),
               }}
             >
               <MenuIcon />
@@ -122,7 +129,7 @@ function DashboardContent() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              {screenName}
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -165,51 +172,19 @@ function DashboardContent() {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-             
-              {/* // Commented Out for Now - Later Functionality
-              // Chart 
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Chart />
-                </Paper>
-              </Grid>
-              // Recent Deposits
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Deposits />
-                </Paper>
-              </Grid>  */}
-
+            <Grid container spacing={4}>
               {/* Posts */}
               <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
-                </Paper>
+                {children}
               </Grid>
             </Grid>
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
-      </Box>
+        </Box>
     </ThemeProvider>
+    </>
   );
 }
 
-export default function Dashboard() {
-  return <DashboardContent />;
-}
+export default MainFrame; 

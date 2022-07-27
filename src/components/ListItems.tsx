@@ -13,7 +13,7 @@ import Link from 'next/link'
 
 export const mainListItems = (
   <React.Fragment>
-    <Link href={"/"}>
+    <Link href={"/find"}>
       <ListItemButton>
         <ListItemIcon>
           <DashboardIcon />
@@ -32,17 +32,17 @@ export const mainListItems = (
     <Link href={"/"}>
       <ListItemButton>
         <ListItemIcon>
-          <PeopleIcon />
-        </ListItemIcon>
-        <ListItemText primary="Who's Here?" />
-      </ListItemButton>
-    </Link>
-    <Link href={"/find"}>
-      <ListItemButton>
-        <ListItemIcon>
           <BarChartIcon />
         </ListItemIcon>
         <ListItemText primary="Trending" />
+      </ListItemButton>
+    </Link>
+    <Link href={"/"}>
+      <ListItemButton>
+        <ListItemIcon>
+          <PeopleIcon />
+        </ListItemIcon>
+        <ListItemText primary="Who's Here?" />
       </ListItemButton>
     </Link>
     <Link href={"/"}>

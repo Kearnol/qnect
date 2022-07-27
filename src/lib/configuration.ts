@@ -1,3 +1,5 @@
+import * as Cookie from "cookie"
+import * as JsonWebToken from 'jsonwebtoken'
 import * as Mongoose from 'mongoose'
 
 /// Settings exposed to the server.
@@ -31,4 +33,17 @@ export const SchemaOptions: Mongoose.SchemaOptions = {
         getters: true,
         versionKey: false,
     }
+}
+
+
+// Authentication config
+export const Authentication = {
+    SaltRounds: 10,
+    MaxLoginAttempts: 5,
+    LockTime: 2 * 60 * 60 * 1000 /// 2 hours.,
+}
+
+export const TokenOptions: JsonWebToken.SignOptions = {
+    algorithm: 'HS256',
+    // expiresIn: '64d',
 }

@@ -1,8 +1,6 @@
 import Layout from "../components/PageLayout"
 import style from '~/styles/index.module.scss'
 import Create from '../components/Create'
-import { Box } from "@mui/system"
-
 
 export default function CreatePage(){
     

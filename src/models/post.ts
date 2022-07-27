@@ -1,22 +1,25 @@
-import Mongoose, { HydratedDocument } from 'mongoose'
+import Mongoose from 'mongoose'
 import * as Config from '~/lib/configuration'
 import * as Database from '~/lib/database'
+import { IUser, userSchema} from './user'
 
 export type IPost = {
+    author: IUser;
     title: string;
     post: string;
     details: string;
 }
 
-const schema = new Mongoose.Schema<IPost>({
+const postSchema = new Mongoose.Schema<IPost>({
+    author: userSchema,
     title: {type: String, required: true},
     post: {type: String, required: true},
     details: {type: String, required: true},
-});
+}, Config.SchemaOptions);
 
 const env = Config.EnvServer()
 
-const Model = Mongoose.models?.Post || Mongoose.model<IPost>('Post', schema);
+const Model = Mongoose.models?.Post || Mongoose.model<IPost>('Post', postSchema);
 
 export async function create(postModel: IPost){
     await Database.connect();

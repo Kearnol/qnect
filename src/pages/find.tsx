@@ -5,7 +5,7 @@ import Card from '@mui/material/Card'
 import React, { SetStateAction, useEffect, useState } from "react"
 import { IPost } from '~/models/post'
 import * as Path from '~/lib/path'
-import * as FetchJson from '~/components/fetchJson'
+import * as FetchJson from '~/lib/fetchJson'
 
 
 
